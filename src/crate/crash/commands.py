@@ -19,9 +19,12 @@
 
 import functools
 import os
+import re
+import click
 
 from distutils.version import StrictVersion
 from collections import OrderedDict
+from prompt_toolkit.document import Document
 
 
 class Command(object):
@@ -223,6 +226,75 @@ class CheckCommand(Command):
             self.CHECKS[check_name](cmd, **kwargs)
         else:
             cmd.logger.warn('No check for {}'.format(check_name))
+
+class ExternalEditorCommand():
+
+    def __init__(self, cli):
+        self.cli = cli
+
+    def _editor_command(self, command):
+        return command.strip().startswith('\\e')
+
+    def _get_filename(self, sql):
+        if sql.strip().startswith('\\e'):
+            command, _, filename = sql.partition(' ')
+            return filename.strip() or None
+
+    def _open_external_editor(self, filename=None, sql=''):
+
+        sql = sql.strip()
+
+        # The reason we can't simply do .strip('\e') is that it strips characters,
+        # not a substring. So it'll strip "e" in the end of the sql also!
+        # Ex: "select * from style\e" -> "select * from styl".
+        pattern = re.compile('(^\\\e|\\\e$)')
+        while pattern.search(sql):
+            sql = pattern.sub('', sql)
+
+        message = None
+        # filename = filename.strip().split(' ', 1)[0] if filename else None
+
+        MARKER = '# Type your query above this line.\n'
+
+        query = click.edit(sql + '\n\n' + MARKER, extension='.sql')
+
+        if query is not None:
+            query = query.split(MARKER, 1)[0].rstrip('\n')
+        else:
+            # Don't return None for the caller to deal with.
+            # Empty string is ok.
+            query = sql
+
+        return (query, message)
+
+    def _get_editor_query(self, sql):
+        """Get the query part of an editor command."""
+        sql = sql.strip()
+
+        # The reason we can't simply do .strip('\e') is that it strips characters,
+        # not a substring. So it'll strip "e" in the end of the sql also!
+        # Ex: "select * from style\e" -> "select * from styl".
+        pattern = re.compile('(^\\\e|\\\e$)')
+        while pattern.search(sql):
+            sql = pattern.sub('', sql)
+        return sql
+
+    def handle_editor_command(self, document):
+        saved_callables = self.cli.application.pre_run_callables
+        # import pdb; pdb.set_trace()
+        while self._editor_command(document.text):
+            filename = self._get_filename(document.text)
+            query = self._get_editor_query(document.text)
+            sql, message = self._open_external_editor(filename, sql=query)
+            if message:
+                # Something went wrong. Raise an exception and bail.
+                raise RuntimeError(message)
+            self.cli.current_buffer.document = Document(sql, cursor_position=len(sql))
+            self.cli.application.pre_run_callables = []
+            document = self.cli.run()
+            continue
+        self.cli.application.pre_run_callables = saved_callables
+        return document
 
 
 built_in_commands = {
