@@ -49,7 +49,7 @@ from prompt_toolkit.layout.processors import (
 from prompt_toolkit.key_binding.manager import KeyBindingManager
 from prompt_toolkit.shortcuts import (create_output,
                                       create_eventloop)
-from .commands import Command, ExternalEditorCommand
+from .commands import Command, EditorCommand
 from .layout import create_layout
 from .keybinding import bind_keys
 
@@ -293,7 +293,7 @@ def loop(cmd, history_file):
 
     def session_toolbar(cli):
         return _get_toolbar_tokens(cmd.is_conn_available, cmd.username, cmd.connection.client.active_servers)
-    
+
 
     key_binding_manager = KeyBindingManager(
         enable_search=True,
@@ -334,11 +334,10 @@ def loop(cmd, history_file):
         return output.get_size().columns
     cmd.get_num_columns = get_num_columns_override
 
-    editor = ExternalEditorCommand(cli)
     while True:
         try:
             doc = cli.run(reset_current_buffer=True)
-            doc = editor.handle_editor_command(doc)
+            doc = EditorCommand.handle_editor_command(cli, doc)
             if doc:
                 cmd.process(doc.text)
         except KeyboardInterrupt:
@@ -346,4 +345,3 @@ def loop(cmd, history_file):
         except EOFError:
             cmd.logger.warn(u'Bye!')
             return
-    

@@ -206,3 +206,8 @@ class ChecksCommandTest(TestCase):
 
         command(cmd, 'nodes')
         cmd.logger.info.assert_called_with('NODE CHECK OK')
+
+class EditorCommandTest(TestCase):
+
+    def test_editor_command(self):
+        ExternalEditorCommand.is_editor_command()
