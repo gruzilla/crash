@@ -34,8 +34,9 @@ Prerequisites
 
 Recent versions of Crash require Python 3 (>= 3.4) to run.
 
-Use Crash version 0.23.x if you are running Python 2.7 or 3.3. Else, use Crash
-version 0.16.x if you're running Python 2.6.
+Use Crash version 0.23.x if you are running Python 2.7 or 3.3.
+
+Use Crash version 0.16.x if you're running Python 2.6.
 
 Installation
 ============
