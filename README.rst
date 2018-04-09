@@ -68,9 +68,9 @@ To update, run::
 
     $ pip install -U crash
 
-If you use Python 2.7 or 3.3 with a recent version of pip_, it will install
-only version ``0.23.x`` by default, because newer versions of this package are
-not compatible with Python 2.7/3.3 any more.
+If you are not using Python version 3.4 or above, recent version of pip_ will
+only install version 0.23.x. This is because newer versions of this package are
+not compatible with Python 2.7 or 3.3 and below.
 
 Standalone
 ----------
