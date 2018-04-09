@@ -83,7 +83,7 @@ First, download the executable file::
 
     $ curl -o crash https://cdn.crate.io/downloads/releases/crash_standalone_latest
 
-Then, set the executable flag::
+Then, set the executable bit::
 
     $ chmod +x crash
 
