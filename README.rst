@@ -79,11 +79,11 @@ Crash is also available as a standalone executable that includes all the
 necessary dependencies, and can be run as long as Python (>= 3.4) is available
 on your system.
 
-First, download the executable::
+First, download the executable file::
 
     $ curl -o crash https://cdn.crate.io/downloads/releases/crash_standalone_latest
 
-Then, make it executable::
+Then, set the executable flag::
 
     $ chmod +x crash
 
