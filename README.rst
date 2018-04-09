@@ -14,10 +14,6 @@ The CrateDB Shell
     :target: https://crate.io/docs/reference/crash/
     :alt: Documentation
 
-.. image:: https://img.shields.io/pypi/pyversions/crash.svg
-    :target: https://pypi.python.org/pypi/crash/
-    :alt: Python Version
-
 .. image:: https://coveralls.io/repos/github/crate/crash/badge.svg?branch=master
     :target: https://coveralls.io/github/crate/crash?branch=master
     :alt: Coverage
