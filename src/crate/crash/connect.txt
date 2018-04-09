@@ -1,6 +1,6 @@
-========
-Examples
-========
+================
+Connection Tests
+================
 
 When you connect to a server that is not reachable or whose hostname cannot be
 resolved you will get an error::

@@ -1,0 +1,49 @@
+.. _commands:
+
+========
+Commands
+========
+
+.. note::
+
+    Crash client commands are available since version ``0.11.x``!
+
+Crash has several client commands, which start with a backslash (``\``).
+
+You can get a list of commands by typing ``\?``:
+
++----------------------+------------------------------------------------------------------------------------+
+| Command              | Description                                                                        |
++======================+====================================================================================+
+| ``\?``               | List all available commands.                                                       |
++----------------------+------------------------------------------------------------------------------------+
+| ``\c``, ``\connect`` | Connect to the given server.                                                       |
+|                      | Same as ``--host`` command line option.                                            |
++----------------------+------------------------------------------------------------------------------------+
+| ``\dt``              | Print existing tables.                                                             |
+|                      | The list does not include tables in the ``sys`` and ``information_schema`` schema. |
++----------------------+------------------------------------------------------------------------------------+
+| ``\format``          | Switch the output format of the SQL response.                                      |
+|                      | Same as ``--format`` command line option.                                          |
+|                      | Available formats are: ``tabular``, ``raw``, ``json``, ``json_row``, ``csv``       |
+|                      | and ``mixed``                                                                      |
+|                      |                                                                                    |
+|                      | see :ref:`formats` for details                                                     |
++----------------------+------------------------------------------------------------------------------------+
+| ``\q``               | Quit the CrateDB shell                                                             |
++----------------------+------------------------------------------------------------------------------------+
+| ``\check``           | Query the ``sys`` tables for failing cluster and node checks if no arguments are   |
+|                      | provided.                                                                          |
+|                      |                                                                                    |
+|                      | The following arguments are allowed:                                               |
+|                      |  - ``nodes``: to query the ``sys.node_checks`` table for failing node checks.      |
+|                      |  - ``cluster``: to query the ``sys.checks`` table for failing cluster checks.      |
++----------------------+------------------------------------------------------------------------------------+
+| ``\r <filename>``    | Reads statements from the given file and executes them                             |
++----------------------+------------------------------------------------------------------------------------+
+| ``\sysinfo``         | Query the ``sys`` tables for system and cluster information                        |
++----------------------+------------------------------------------------------------------------------------+
+| ``\autocomplete``    | Turn autocomplete feature on or off. Works as a toggle.                            |
++----------------------+------------------------------------------------------------------------------------+
+| ``\autocapitalize``  | Turn automatic capitalization for SQL keywords or off. Works as a toggle.          |
++----------------------+------------------------------------------------------------------------------------+

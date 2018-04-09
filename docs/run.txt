@@ -1,68 +1,96 @@
-.. _cli:
+.. _run:
 
 =============
 Running Crash
 =============
 
-The ``crash`` binary supports several command line arguments.
+This document covers the basics of running Crash from the `command-line`_.
 
-+---------------------------------------+--------------------------------------------------+
-| Argument                              | Description                                      |
-+=======================================+==================================================+
-| ``-h``, ``--help``                    | Show the help message end exit.                  |
-+---------------------------------------+--------------------------------------------------+
-| ``-v``, ``--verbose``                 | Print debug information to stdout.               |
-+---------------------------------------+--------------------------------------------------+
-| ``-U``, ``--username``                | The username to authenticate in the database     |
-+---------------------------------------+--------------------------------------------------+
-| ``-W``, ``--password``                | Force prompt for password. Otherwise it prompts  |
-|                                       | for password automatically in case the server    |
-|                                       | requires user authorization.                     |
-+---------------------------------------+--------------------------------------------------+
-| ``-c COMMAND``, ``--command COMMAND`` | Execute the SQL statement and exit.              |
-+---------------------------------------+--------------------------------------------------+
-| ``--hosts HOSTS``                     | The CrateDB hosts to connect to.                 |
-+---------------------------------------+--------------------------------------------------+
-| ``--history HISTORY``                 | The history file the CrateDB shell uses.         |
-+---------------------------------------+--------------------------------------------------+
-| ``--config CONFIG``                   | Path to the configuration file which contains    |
-|                                       | default values for Crash.                        |
-|                                       | Defaults to the `user configuration directory`_  |
-|                                       | of the operating system, which is e.g on Linux   |
-|                                       | ``~/.config/Crate``,                             |
-|                                       | ``~/Library/Application Support/Crate`` on OSX   |
-|                                       | or ``C:\\Users\user\AppData\Local\Crate\Crate``  |
-|                                       | on Windows.                                      |
-+---------------------------------------+--------------------------------------------------+
-| ``--format FORMAT``                   | Specifies the output format of the SQL response. |
-+---------------------------------------+--------------------------------------------------+
-| ``--version``                         | Print the crash version and exit.                |
-+---------------------------------------+--------------------------------------------------+
-| ``--sysinfo``                         | Print system and cluster information.            |
-+---------------------------------------+--------------------------------------------------+
-| ``-A`` , ``--no-autocomplete``        | Disable autocomplete of SQL keywords on startup. |
-|                                       | Autocomplete requires a minimum terminal         |
-|                                       | height of 8 lines due to size of the dropdown    |
-|                                       | overlay for suggestions.                         |
-|                                       | Disabling autocomplete removes this limitation.  |
-+---------------------------------------+--------------------------------------------------+
-| ``-a`` , ``--autocapitalize``         | Enable automatic capitalization of SQL keywords  |
-|                                       | while typing. This feature is experimental and   |
-|                                       | may be removed in future versions.               |
-+---------------------------------------+--------------------------------------------------+
-| ``--verify-ssl``                      | Force verification of the SSL certificate of the |
-|                                       | server.                                          |
-+---------------------------------------+--------------------------------------------------+
-| ``--cert-file``                       | Path to the client certificate file.             |
-+---------------------------------------+--------------------------------------------------+
-| ``--key-file``                        | Path to the key file of the client certificate.  |
-+---------------------------------------+--------------------------------------------------+
-| ``--ca-cert-file``                    | Path to CA certificate file (used to verify      |
-|                                       | the certificate sent by the server.              |
-+---------------------------------------+--------------------------------------------------+
+.. NOTE::
 
-Example Usage
-=============
+   For help using Crash for the first time, check out :ref:`getting-started`.
+
+Command-Line Options
+====================
+
+The ``crash`` executable supports multiple command-line options:
+
++---------------------------+--------------------------------------------------+
+| Argument                  | Description                                      |
++===========================+==================================================+
+| | ``-h``,                 | Show the help message and exit.                  |
+| | ``--help``              |                                                  |
++---------------------------+--------------------------------------------------+
+| | ``-v``,                 | Print debug information to `STDOUT`_.            |
+| | ``--verbose``           |                                                  |
++---------------------------+--------------------------------------------------+
+| ``--version``             | Print the crash version and exit.                |
++---------------------------+--------------------------------------------------+
+| ``--sysinfo``             | Print system and cluster information.            |
++---------------------------+--------------------------------------------------+
+| | ``-U USERNAME``,        | Authenticate as ``USERNAME``.                    |
+| | ``--username USERNAME`` |                                                  |
++---------------------------+--------------------------------------------------+
+| | ``-W``,                 | Force a password prompt.                         |
+| | ``--password``          |                                                  |
+|                           | If not set, a password prompt happens when       |
+|                           | required.                                        |
++---------------------------+--------------------------------------------------+
+| | ``-c STATEMENT``,       | Execute the ``STATEMENT`` and exit.              |
+| | ``--command STATEMENT`` |                                                  |
++---------------------------+--------------------------------------------------+
+| ``--hosts HOSTS``         | Connect to ``HOSTS``.                            |
+|                           |                                                  |
+|                           | ``HOSTS`` can be a single host, or it can be a   |
+|                           | space separated list of hosts.                   |
+|                           |                                                  |
+|                           | If multiple hosts are specified, Crash will      |
+|                           | attempt to connect to all of them. The command   |
+|                           | will succeed if at least one connection is       |
+|                           | successful.                                      |
++---------------------------+--------------------------------------------------+
+| ``--history FILE``        | Use ``FILE`` as a history file.                  |
+|                           |                                                  |
+|                           | Defaults to the ``crash_history`` file in the    |
+|                           | :ref:`user configuration directory               |
+|                           | <user-conf-dir>`.                                |
++---------------------------+--------------------------------------------------+
+| ``--config CONFIG``       | Path to the configuration file which contains    |
+|                           | default values for Crash.                        |
+|                           |                                                  |
+|                           | Defaults to the ``crash_history`` file in the    |
+|                           | :ref:`user configuration directory               |
+|                           | <user-conf-dir>`.                                |
++---------------------------+--------------------------------------------------+
+| ``--format FORMAT``       | Specifies the output format of the SQL response. |
++---------------------------+--------------------------------------------------+
+| | ``-A`` ,                | Disable SQL keywords autocompletion.             |
+| | ``--no-autocomplete``   |                                                  |
+|                           | Autocompletion requires a minimum terminal       |
+|                           | height of eight lines due to size of the         |
+|                           | dropdown overlay for suggestions. Disabling      |
+|                           | autocompletion removes this limitation.          |
++---------------------------+--------------------------------------------------+
+| | ``-a`` ,                | Enable automatic capitalization of SQL keywords  |
+| | ``--autocapitalize``    | while typing.                                    |
+|                           |                                                  |
+|                           | This feature is experimental and may be removed  |
+|                           | in future versions.                              |
++---------------------------+--------------------------------------------------+
+| ``--verify-ssl``          | Force the verification of the server SSL         |
+|                           | certificate.                                     |
++---------------------------+--------------------------------------------------+
+| ``--cert-file FILE``      | Use ``FILE`` as the client certificate file.     |
++---------------------------+--------------------------------------------------+
+| ``--key-file FILE``       | Use ``FILE`` as the client certificate key file. |
++---------------------------+--------------------------------------------------+
+| ``--ca-cert-file FILE``   | Use ``FILE`` as the certificate authority (CA)   |
+|                           | certificate file (used to verify the             |
+|                           | server certificate).                             |
++---------------------------+--------------------------------------------------+
+
+Simple Example
+--------------
 
 ::
 
@@ -71,8 +99,8 @@ Example Usage
             -c 'select * from sys.nodes' > output.json
 
 
-Example Usage with SSL
-======================
+SSl Example
+-----------
 
 ::
 
@@ -82,8 +110,18 @@ Example Usage with SSL
             --ca-cert-file /home/.certs/rootCA.crt -U sslUser \
             -c 'select * from sys.nodes' > output.json
 
+.. _user-conf-dir:
 
-=====================
+User Configuration Directory
+============================
+
+Defaults to the `user configuration directory`_
+of the operating system, which is e.g on Linux
+``~/.config/Crate``, ``~/Library/Application
+Support/Crate`` on OSX or
+``C:\\Users\user\AppData\Local\Crate\Crate`` on
+Windows.
+
 Environment Variables
 =====================
 
@@ -106,55 +144,6 @@ For example::
 
 .. _commands:
 
-==============
-Crash Commands
-==============
-
-.. note::
-
-    Crash client commands are available since version ``0.11.x``!
-
-Crash has several client commands, which start with a backslash (``\``).
-
-You can get a list of commands by typing ``\?``:
-
-+----------------------+------------------------------------------------------------------------------------+
-| Command              | Description                                                                        |
-+======================+====================================================================================+
-| ``\?``               | List all available commands.                                                       |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\c``, ``\connect`` | Connect to the given server.                                                       |
-|                      | Same as ``--host`` command line option.                                            |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\dt``              | Print existing tables.                                                             |
-|                      | The list does not include tables in the ``sys`` and ``information_schema`` schema. |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\format``          | Switch the output format of the SQL response.                                      |
-|                      | Same as ``--format`` command line option.                                          |
-|                      | Available formats are: ``tabular``, ``raw``, ``json``, ``json_row``, ``csv``       |
-|                      | and ``mixed``                                                                      |
-|                      |                                                                                    |
-|                      | see :ref:`formats` for details                                                     |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\q``               | Quit the CrateDB shell                                                             |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\check``           | Query the ``sys`` tables for failing cluster and node checks if no arguments are   |
-|                      | provided.                                                                          |
-|                      |                                                                                    |
-|                      | The following arguments are allowed:                                               |
-|                      |  - ``nodes``: to query the ``sys.node_checks`` table for failing node checks.      |
-|                      |  - ``cluster``: to query the ``sys.checks`` table for failing cluster checks.      |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\r <filename>``    | Reads statements from the given file and executes them                             |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\sysinfo``         | Query the ``sys`` tables for system and cluster information                        |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\autocomplete``    | Turn autocomplete feature on or off. Works as a toggle.                            |
-+----------------------+------------------------------------------------------------------------------------+
-| ``\autocapitalize``  | Turn automatic capitalization for SQL keywords or off. Works as a toggle.          |
-+----------------------+------------------------------------------------------------------------------------+
-
-===============
 Status Messages
 ===============
 
@@ -183,7 +172,7 @@ if the row count of a statement is unknown.
 ``DURATION`` is the time it took to process the SQL statement on the server
 from request to response.
 
-
+.. _command-line: https://en.wikipedia.org/wiki/Command-line_interface
 .. _jq: http://stedolan.github.io/jq/
 .. _user configuration directory: https://specifications.freedesktop.org/basedir-spec/basedir-spec-latest.html
-
+.. _STDOUT: https://en.wikipedia.org/wiki/Standard_streams

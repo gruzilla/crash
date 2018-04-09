@@ -1,0 +1,33 @@
+.. _compatibility:
+
+=============
+Compatibility
+=============
+
+.. NOTE::
+
+   We recommend that you use the version of Crash that is bundled with the
+   version of CrateDB that you are using. This minimises the chances of
+   compatibility issues.
+
+CrateDB tries to maintain `backwards`_ and `forwards`_ compatibility. However,
+this is not always possible.
+
+Known compatibility issues:
+
+- Due to `information schema`_ changes, Crash versions 0.19 and earlier
+  are not compatible with CrateDB versions 0.57 and later.
+
+- For CrateDB versions 0.38.x and earlier, it is not possible to insert nested
+  arrays or nested objects via Crash. You must use `CrateDB REST endpoint`_ or a
+  `client library`_.
+
+  CrateDB versions 0.39 and later allow you to insert nested arrays using
+  `array constructors`_, and nested objects using `object literals`_.
+
+.. _array constructors: https://crate.io/docs/crate/reference/en/latest/general/ddl/data-types.html#array-constructor
+.. _backwards: https://en.wikipedia.org/wiki/Backward_compatibility
+.. _client library: https://crate.io/docs/crate/getting-started/en/latest/start-building/index.html
+.. _forwards: https://en.wikipedia.org/wiki/Forward_compatibility
+.. _information schema: https://crate.io/docs/crate/reference/en/latest/general/information-schema.html
+.. _object literals: https://crate.io/docs/crate/reference/en/latest/general/ddl/data-types.html#object-literals

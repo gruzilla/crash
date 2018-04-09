@@ -20,8 +20,9 @@ The CrateDB Shell
 
 |
 
-The CrashDB Shell (aka *Crash*) is an interactive *command line interface*
-(CLI) for CrateDB.
+
+The CrashDB Shell (aka *Crash*) is an interactive `command-line interface`_
+(CLI) tool for interacting with CrateDB.
 
 Screenshot
 ==========
@@ -43,7 +44,8 @@ Installation
 
 Under normal circumstances, you do not have to manually install Crash.
 
-Crash is bundled with CrateDB.
+Crash is bundled with CrateDB so there is typically no need to install it
+yourself.
 
 If you are able to run the ``crate`` command, you should be able to run the
 ``crash`` command (either from the same ``bin`` directory, or on your `PATH`_).
@@ -130,12 +132,13 @@ Looking for more help?
 - Chat with us on `Slack`_
 - Get `paid support`_
 
+.. _command-line interface: https://en.wikipedia.org/wiki/Command-line_interface
 .. _contribution docs: CONTRIBUTING.rst
 .. _Crate.io: http://crate.io/
 .. _developer docs: DEVELOP.rst
 .. _paid support: https://crate.io/pricing/
+.. _PATH: https://en.wikipedia.org/wiki/PATH_(variable)
 .. _pip: https://pypi.python.org/pypi/pip
 .. _Slack: https://crate.io/docs/support/slackin/
 .. _StackOverflow: https://stackoverflow.com/tags/crate
 .. _the project documentation: https://crate.io/docs/reference/crash/
-.. _PATH: https://en.wikipedia.org/wiki/PATH_(variable)
