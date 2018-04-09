@@ -97,11 +97,11 @@ If you would like to run ``crash`` from any directory, and without the leading
 Legacy Versions
 ...............
 
-For Python 2.7 and 3.3 please download version ``0.23.0`` from the CDN::
+For Python 2.7 and 3.3 please download version 0.23.0 from the CDN::
 
     $ curl -o crash https://cdn.crate.io/downloads/releases/crash_standalone_0.23.0
 
-For Python 2.6 please download version ``0.16.2`` from the CDN::
+For Python 2.6 please download version 0.16.2 from the CDN::
 
     $ curl -o crash https://cdn.crate.io/downloads/releases/crash_standalone_0.16.2
 
