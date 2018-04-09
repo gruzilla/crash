@@ -92,7 +92,7 @@ Now, run it::
     $ ./crash
 
 If you would like to run ``crash`` from any directory and without the leading
-``./`` you need to move it to a director that is on your `PATH`_.
+``./`` you need to move it to a directory that is on your `PATH`_.
 
 Legacy Versions
 ...............
