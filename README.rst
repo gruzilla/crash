@@ -51,8 +51,8 @@ If you are able to run the ``crate`` command, you should be able to run the
 The following instructions should only be followed if you specifically want to
 install Crash separately from CrateDB.
 
-As a Python Package
--------------------
+Python Package
+--------------
 
 Crash is available as a pip_ package.
 
