@@ -1,12 +1,12 @@
-=====
-Crash
-=====
+=================
+The CrateDB Shell
+=================
 
 .. image:: https://travis-ci.org/crate/crash.svg?branch=master
     :target: https://travis-ci.org/crate/crash
     :alt: Travis CI
 
-.. image:: https://badge.fury.io/py/crash.png
+.. image:: https://badge.fury.io/py/crash.svg
     :target: http://badge.fury.io/py/crash
     :alt: Version
 
@@ -18,30 +18,39 @@ Crash
     :target: https://pypi.python.org/pypi/crash/
     :alt: Python Version
 
-.. image:: https://img.shields.io/coveralls/crate/crash.svg
-    :target: https://coveralls.io/r/crate/crash?branch=master
+.. image:: https://coveralls.io/repos/github/crate/crash/badge.svg?branch=master
+    :target: https://coveralls.io/github/crate/crash?branch=master
     :alt: Coverage
 
 |
 
-Crash is an interactive CrateDB *command line interface* (CLI) SQL shell with autocompletion.
+The CrashDB Shell (aka *Crash*) is an interactive *command line interface*
+(CLI) for CrateDB.
 
 Screenshot
 ==========
 
-.. image:: crash.png
+.. image:: https://raw.githubusercontent.com/crate/crash/master/crash.png
     :alt: A screenshot of Crash
 
 Prerequisites
 =============
 
-Recent versions of Crash require **Python 3** (>= 3.4) to run.
+Recent versions of Crash require Python 3 (>= 3.4) to run.
 
 Use Crash version ``0.23.x`` if you are running Python 2.7/3.3 or version
 ``0.16.x`` if you're running Python 2.6.
 
 Installation
 ============
+
+Under normal circumstances, you do not have to manually install Crash. Crash is
+bundled with CrateDB. If you are able to run the ``crate`` command, you should
+be able to run the ``crash`` command (either from the same ``bin`` directory,
+or on your `PATH`_).
+
+The following instructions should only be followed if you specifically want to
+install Crash separately from CrateDB.
 
 As a Python Package
 -------------------
