@@ -41,10 +41,12 @@ Use Crash version 0.16.x if you're running Python 2.6.
 Installation
 ============
 
-Under normal circumstances, you do not have to manually install Crash. Crash is
-bundled with CrateDB. If you are able to run the ``crate`` command, you should
-be able to run the ``crash`` command (either from the same ``bin`` directory,
-or on your `PATH`_).
+Under normal circumstances, you do not have to manually install Crash.
+
+Crash is bundled with CrateDB.
+
+If you are able to run the ``crate`` command, you should be able to run the
+``crash`` command (either from the same ``bin`` directory, or on your `PATH`_).
 
 The following instructions should only be followed if you specifically want to
 install Crash separately from CrateDB.
@@ -135,3 +137,4 @@ Looking for more help?
 .. _Slack: https://crate.io/docs/support/slackin/
 .. _StackOverflow: https://stackoverflow.com/tags/crate
 .. _the project documentation: https://crate.io/docs/reference/crash/
+.. _PATH: https://en.wikipedia.org/wiki/PATH_(variable)
