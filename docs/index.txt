@@ -2,7 +2,8 @@
 The CrateDB Shell
 =================
 
-The CrashDB Shell (aka ``crash``) provides a CLI for the CrateDB Server.
+The CrashDB Shell (aka *Crash*) is an interactive *command line interface*
+(CLI) for CrateDB.
 
 .. rubric:: Table of Contents
 
@@ -10,5 +11,7 @@ The CrashDB Shell (aka ``crash``) provides a CLI for the CrateDB Server.
    :maxdepth: 2
 
    usage
-   cli
+   run
    formats
+
+.. _PATH: https://en.wikipedia.org/wiki/PATH_(variable)

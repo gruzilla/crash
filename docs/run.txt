@@ -1,8 +1,8 @@
 .. _cli:
 
-======================
-Command Line Arguments
-======================
+=============
+Running Crash
+=============
 
 The ``crash`` binary supports several command line arguments.
 
