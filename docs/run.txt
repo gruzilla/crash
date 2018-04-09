@@ -89,6 +89,9 @@ The ``crash`` executable supports multiple command-line options:
 |                           | server certificate).                             |
 +---------------------------+--------------------------------------------------+
 
+TODO: update crash --help output to match above
+TODO: add comment for future authors to do the same
+
 Simple Example
 --------------
 

@@ -5,7 +5,7 @@ Developer Guide
 Setup
 =====
 
-This project uses buildout_ to set up the development environment.
+This project uses `buildout`_ to set up the development environment.
 
 To start things off, run::
 
